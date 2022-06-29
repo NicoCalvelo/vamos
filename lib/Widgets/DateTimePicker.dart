@@ -8,9 +8,6 @@ class DateTimePicker extends StatefulWidget {
 }
 
 class _DateTimePickerState extends State<DateTimePicker> {
-  late double _height;
-  late double _width;
-
   late String? _setTime, _setDate;
 
   late String _hour, _minute, _time;
@@ -70,100 +67,121 @@ class _DateTimePickerState extends State<DateTimePicker> {
 
   @override
   Widget build(BuildContext context) {
-    _height = MediaQuery.of(context).size.height;
-    _width = MediaQuery.of(context).size.width;
     dateTime = DateFormat.yMd().format(DateTime.now());
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text('Date time picker'),
-      ),
-      body: Container(
-        width: _width,
-        height: _height,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: <Widget>[
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Column(
-              children: <Widget>[
-                const Text(
-                  'Choose Date',
-                  style: TextStyle(
-                      fontStyle: FontStyle.italic,
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: 0.5),
-                ),
-                InkWell(
-                  onTap: () {
-                    _selectDate(context);
-                  },
-                  child: Container(
-                    width: _width / 1.7,
-                    height: _height / 9,
-                    margin: EdgeInsets.only(top: 30),
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(color: Colors.grey[200]),
-                    child: TextFormField(
-                      style: TextStyle(fontSize: 40),
-                      textAlign: TextAlign.center,
-                      enabled: false,
-                      keyboardType: TextInputType.text,
-                      controller: _dateController,
-                      onSaved: (String? val) {
-                        _setDate = val;
-                      },
-                      decoration: const InputDecoration(
-                          disabledBorder:
-                              UnderlineInputBorder(borderSide: BorderSide.none),
-                          // labelText: 'Time',
-                          contentPadding: EdgeInsets.only(top: 0.0)),
-                    ),
-                  ),
-                ),
-              ],
+            const Text(
+              'Fecha',
+              style: TextStyle(fontSize: 20),
             ),
-            Column(
-              children: <Widget>[
-                const Text(
-                  'Choose Time',
-                  style: TextStyle(
-                      fontStyle: FontStyle.italic,
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: 0.5),
+            InkWell(
+              onTap: () {
+                _selectDate(context);
+              },
+              child: Container(
+                width: 150,
+                height: 50,
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                margin: EdgeInsets.only(top: 10),
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(8)),
+                  color: Color.fromRGBO(250, 250, 250, 1),
                 ),
-                InkWell(
-                  onTap: () {
-                    _selectTime(context);
-                  },
-                  child: Container(
-                    margin: EdgeInsets.only(top: 30),
-                    width: _width / 1.7,
-                    height: _height / 9,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(color: Colors.grey[200]),
-                    child: TextFormField(
-                      style: TextStyle(fontSize: 40),
-                      textAlign: TextAlign.center,
-                      onSaved: (String? val) {
-                        _setTime = val;
-                      },
-                      enabled: false,
-                      keyboardType: TextInputType.text,
-                      controller: _timeController,
-                      decoration: InputDecoration(
-                          disabledBorder:
-                              UnderlineInputBorder(borderSide: BorderSide.none),
-                          // labelText: 'Time',
-                          contentPadding: EdgeInsets.all(5)),
+                alignment: Alignment.center,
+                child: Row(
+                  children: [
+                    Container(
+                      width: 110,
+                      child: TextFormField(
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w300,
+                        ),
+                        enabled: false,
+                        textAlign: TextAlign.start,
+                        keyboardType: TextInputType.text,
+                        controller: _dateController,
+                        onSaved: (String? val) {
+                          _setDate = val;
+                        },
+                        decoration: const InputDecoration(
+                            disabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide.none),
+                            contentPadding: EdgeInsets.all(10)),
+                      ),
                     ),
-                  ),
+                    const Icon(
+                      Icons.calendar_today_rounded,
+                      color: Color.fromRGBO(190, 190, 190, 1),
+                      size: 20,
+                    )
+                  ],
                 ),
-              ],
+              ),
             ),
           ],
         ),
-      ),
+        Padding(
+          padding: const EdgeInsets.only(left: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              const Text(
+                'Hora',
+                style: TextStyle(fontSize: 20),
+              ),
+              InkWell(
+                onTap: () {
+                  _selectTime(context);
+                },
+                child: Container(
+                  width: 150,
+                  height: 50, 
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  margin: EdgeInsets.only(top: 10),
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(8)),
+                    color: Color.fromRGBO(250, 250, 250, 1),
+                  ),
+                  alignment: Alignment.center,
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 110,
+                        child: TextFormField(
+                          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
+                          textAlign: TextAlign.center,
+                          onSaved: (String? val) {
+                            _setTime = val;
+                          },
+                          enabled: false,
+                          keyboardType: TextInputType.text,
+                          controller: _timeController,
+                          decoration: const InputDecoration(
+                              disabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide.none),
+                              // labelText: 'Time',
+                              contentPadding: EdgeInsets.all(5)),
+                        ),
+                      ),
+                      const Icon(
+                        Icons.access_time,
+                        color: Color.fromRGBO(190, 190, 190, 1),
+                        size: 20,
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

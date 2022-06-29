@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vamos/Widgets/DateTimePicker.dart';
 
 class CreateEvenet extends StatefulWidget {
   const CreateEvenet({Key? key}) : super(key: key);
@@ -77,13 +78,9 @@ class _CreateEvenetState extends State<CreateEvenet> {
                           children: [
                             Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Text(
-                              'Fecha',
-                              style: TextStyle(
-                                  fontSize: 20),
-                            ),
+                          children: <Widget>[
                             
+                            DateTimePicker()
                           ],
                         ),
                         
