@@ -77,7 +77,7 @@ class _DateTimePickerState extends State<DateTimePicker> {
           children: <Widget>[
             const Text(
               'Fecha',
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(fontSize: 18),
             ),
             InkWell(
               onTap: () {
@@ -86,8 +86,8 @@ class _DateTimePickerState extends State<DateTimePicker> {
               child: Container(
                 width: 150,
                 height: 50,
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                margin: EdgeInsets.only(top: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                margin: const EdgeInsets.only(top: 10),
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(8)),
                   color: Color.fromRGBO(250, 250, 250, 1),
@@ -95,10 +95,15 @@ class _DateTimePickerState extends State<DateTimePicker> {
                 alignment: Alignment.center,
                 child: Row(
                   children: [
+                    const Icon(
+                      Icons.calendar_today_rounded,
+                      color: Color.fromRGBO(190, 190, 190, 1),
+                      size: 20,
+                    ),
                     Container(
                       width: 110,
                       child: TextFormField(
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w300,
                         ),
@@ -114,11 +119,6 @@ class _DateTimePickerState extends State<DateTimePicker> {
                                 borderSide: BorderSide.none),
                             contentPadding: EdgeInsets.all(10)),
                       ),
-                    ),
-                    const Icon(
-                      Icons.calendar_today_rounded,
-                      color: Color.fromRGBO(190, 190, 190, 1),
-                      size: 20,
                     )
                   ],
                 ),
@@ -133,7 +133,7 @@ class _DateTimePickerState extends State<DateTimePicker> {
             children: <Widget>[
               const Text(
                 'Hora',
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 18),
               ),
               InkWell(
                 onTap: () {
@@ -151,6 +151,11 @@ class _DateTimePickerState extends State<DateTimePicker> {
                   alignment: Alignment.center,
                   child: Row(
                     children: [
+                      const Icon(
+                        Icons.access_time,
+                        color: Color.fromRGBO(190, 190, 190, 1),
+                        size: 20,
+                      ),
                       Container(
                         width: 110,
                         child: TextFormField(
@@ -168,11 +173,6 @@ class _DateTimePickerState extends State<DateTimePicker> {
                               // labelText: 'Time',
                               contentPadding: EdgeInsets.all(5)),
                         ),
-                      ),
-                      const Icon(
-                        Icons.access_time,
-                        color: Color.fromRGBO(190, 190, 190, 1),
-                        size: 20,
                       )
                     ],
                   ),
